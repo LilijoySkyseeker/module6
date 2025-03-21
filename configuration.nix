@@ -9,8 +9,7 @@
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFA+HAQkhmPxKyJFSopziqIVNvFqEaqyRWPVvgu+urfh lilijoy@nixos-thinkpad"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6pG0Y9QdCBRJZKpCD62U3uXl5Lz/bE0ifWLbhZ4q9o lilijoy@torrent"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJN4rgL2x8oJ0OwXw7q0prfLqg/QngE1yr80x2rrxJFQ curra@Desktop-Casey
-"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJN4rgL2x8oJ0OwXw7q0prfLqg/QngE1yr80x2rrxJFQ curra@Desktop-Casey"
   ];
   services.openssh = {
     ports = [ 2222 22 ];
@@ -34,7 +33,7 @@
   nix.settings.allowed-users = [ "root" ];
   security.sudo.enable = false;
 
-  # auto gc with nh
+  # auto garbage collection with nh
   programs.nh = {
     enable = true;
     clean = {
