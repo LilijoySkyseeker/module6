@@ -21,7 +21,7 @@
     in
     {
       nixosConfigurations = {
-        # generate sd card image: `nix  --experimental-features 'nix-command flakes' build '.#nixosConfigurations.pie.config.system.build.sdImage' --out-link ~/Downloads/`
+        # generate sd card image: `nix  --experimental-features 'nix-command flakes' build '.#nixosConfigurations.pie.config.system.build.sdImage' --out-link ~/Downloads/nixos-sd-image.img`
         pie = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {
             inherit

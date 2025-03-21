@@ -7,9 +7,10 @@
   # ssh server
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFA+HAQkhmPxKyJFSopziqIVNvFqEaqyRWPVvgu+urfh lilijoy@nixos-thinkpad"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6pG0Y9QdCBRJZKpCD62U3uXl5Lz/bE0ifWLbhZ4q9o lilijoy@torrent"
   ];
   services.openssh = {
-    ports = [ 22 ];
+    ports = [ 2222 22 ];
     openFirewall = true;
     allowSFTP = true;
     enable = true;
