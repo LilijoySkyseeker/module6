@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs-stable; [
     git
   ];
-
+  
   # ssh server
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFA+HAQkhmPxKyJFSopziqIVNvFqEaqyRWPVvgu+urfh lilijoy@nixos-thinkpad"
@@ -13,7 +13,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDCYZ7v+CZ1guMGIA1+VjrCL+0JRW34DRtzvPYTvD375 te@Ground-Zero"
   ];
   services.openssh = {
-    ports = [ 2222 22 ];
+    ports = [ 1863 22 ];
     openFirewall = true;
     allowSFTP = true;
     enable = true;
