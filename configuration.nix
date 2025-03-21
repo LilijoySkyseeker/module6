@@ -10,6 +10,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFA+HAQkhmPxKyJFSopziqIVNvFqEaqyRWPVvgu+urfh lilijoy@nixos-thinkpad"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6pG0Y9QdCBRJZKpCD62U3uXl5Lz/bE0ifWLbhZ4q9o lilijoy@torrent"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJN4rgL2x8oJ0OwXw7q0prfLqg/QngE1yr80x2rrxJFQ curra@Desktop-Casey"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDCYZ7v+CZ1guMGIA1+VjrCL+0JRW34DRtzvPYTvD375 te@Ground-Zero"
   ];
   services.openssh = {
     ports = [ 2222 22 ];
