@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs-stable; [
     git
   ];
+
   # ssh server
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFA+HAQkhmPxKyJFSopziqIVNvFqEaqyRWPVvgu+urfh lilijoy@nixos-thinkpad"
@@ -26,6 +27,10 @@
       PermitTunnel no
     '';
   };
+  
+  # security
+  nix.settings.allowed-users = [ "root" ];
+  security.sudo.enable = false;
 
   # auto gc with nh
   programs.nh = {
