@@ -12,6 +12,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJN4rgL2x8oJ0OwXw7q0prfLqg/QngE1yr80x2rrxJFQ curra@Desktop-Casey"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDCYZ7v+CZ1guMGIA1+VjrCL+0JRW34DRtzvPYTvD375 te@Ground-Zero"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFWKWOuIAPvZABYFwwquVZSswikDttNPIVrjoj5e79uW logan@OL-BETSY"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgTMBANqTvczSh88Z/HshY9hwgi4FBZNRNYBBxKsXXe michael@DESKTOP-NDPH02I"
   ];
   services.openssh = {
     ports = [ 1863 22 ];
