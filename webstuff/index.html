@@ -1,19 +1,164 @@
 <!DOCTYPE html>
-<head>                                                     <!-- ctrl alt h-->
-    <title>LAB</title>                                     <!--Can be changed-->
-    <link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Lab Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F4F4F4;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 300px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    h2 {
+      color: #003366;
+    }
+
+    form {
+      background-color: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #800000;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #CCCCCC;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #003366;
+      color: #FFFFFF;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #002244;
+    }
+
+    #sessionArea {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #timer {
+      font-weight: bold;
+      margin-top: 20px;
+      color: #800000;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to login</h1>
-    </header>
-    <section>
 
-    </section>
+  <!-- Logo Display -->
+  <img src="VWCC_Logo.PNG" class="logo">
 
+  <h2>Lab Student Login</h2>
 
-    <footer>
+  <form id="loginForm">
+    <label for="userID">Student ID:</label>
+    <input type="text" id="userID" name="userID" required>
 
-    </footer>
+    <label for="classNumber">Class Number:</label>
+    <input type="text" id="classNumber" name="classNumber" required>
+
+    <button type="submit">Log In</button>
+  </form>
+
+  <div id="sessionArea">
+    <p id="timer">Session Time: 00:00:00</p>
+    <button onclick="logOut()">Log Out</button>
+  </div>
+
+  <script>
+    let startTime, timerInterval;
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const userID = document.getElementById('userID').value;
+      const classNumber = document.getElementById('classNumber').value;
+
+      fetch('/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ userID, classNumber })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          startSessionTimer();
+          document.getElementById('loginForm').style.display = 'none';
+          document.getElementById('sessionArea').style.display = 'block';
+        } else {
+          alert(data.message || 'Login failed. Please try again.');
+        }
+      });
+    });
+
+    function startSessionTimer() {
+      startTime = new Date();
+      timerInterval = setInterval(() => {
+        const now = new Date();
+        const diff = new Date(now - startTime);
+        const h = String(diff.getUTCHours()).padStart(2, '0');
+        const m = String(diff.getUTCMinutes()).padStart(2, '0');
+        const s = String(diff.getUTCSeconds()).padStart(2, '0');
+        document.getElementById('timer').innerText = `Session Time: ${h}:${m}:${s}`;
+      }, 1000);
+    }
+
+    function logOut() {
+      clearInterval(timerInterval);
+
+      const userID = document.getElementById('userID').value;
+      const classNumber = document.getElementById('classNumber').value;
+
+      fetch('/logout', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          userID,
+          classNumber,
+          logoutTime: new Date().toISOString()
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || 'Logged out successfully.');
+
+        document.getElementById('loginForm').reset();
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('sessionArea').style.display = 'none';
+        document.getElementById('timer').innerText = 'Session Time: 00:00:00';
+      });
+    }
+  </script>
+
 </body>
 </html>
