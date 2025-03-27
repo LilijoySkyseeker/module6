@@ -3,7 +3,14 @@
   # system packages
   environment.systemPackages = with pkgs-stable; [
     git
+    mycli
   ];
+  
+  # mariadb sql server
+  services.mysql = {
+    enable = true;
+    package = pkgs-stable.mariadb;
+  };
   
   # ssh server
   users.users.root.openssh.authorizedKeys.keys = [
