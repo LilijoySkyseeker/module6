@@ -1,4 +1,4 @@
-use project4_team7;
+use Project4_Team7;
 INSERT INTO Users (Username, Pass) VALUES
 ('Doe','password123'), 
 ('Smith','password456'), 
