@@ -4,6 +4,7 @@ USE Project4_Team7;
 
 CREATE TABLE Users (
     UserID INT AUTO_INCREMENT,
+    Username VARCHAR(50) NOT NULL;
     Pass VARCHAR(255) NOT NULL,
     PRIMARY KEY (UserID)
 );

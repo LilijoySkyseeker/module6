@@ -81,7 +81,7 @@
   <h2>Lab Student Login</h2>
 
   <form id="loginForm">
-    <label for="userID">Student ID:</label>
+    <label for="userID">Student Last Name:</label>
     <input type="text" id="userID" name="userID" required>
 
     <label for="classNumber">Class Number:</label>
@@ -104,7 +104,7 @@
       const userID = document.getElementById('userID').value;
       const classNumber = document.getElementById('classNumber').value;
 
-      fetch('/login', {
+      fetch('login.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ userID, classNumber })
@@ -139,13 +139,12 @@
       const userID = document.getElementById('userID').value;
       const classNumber = document.getElementById('classNumber').value;
 
-      fetch('/logout', {
+      fetch('logout.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           userID,
           classNumber,
-          logoutTime: new Date().toISOString()
         })
       })
       .then(res => res.json())
